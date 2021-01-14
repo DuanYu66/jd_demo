@@ -1,2 +1,2 @@
 # jd_demo
-购物商场 demo
+购物商城 demo
