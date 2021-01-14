@@ -1,0 +1,10 @@
+// 全局样式
+
+// ============ 懒加载默认图片样式 start =============
+img[lazy="loading"] {
+  display: block;
+  width: 100% !important;
+  height: 280px !important;
+  margin: 0 auto;
+}
+// ============ 懒加载默认图片样式 end =============
