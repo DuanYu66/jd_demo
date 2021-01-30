@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-09-26 18:37:43
- * @LastEditTime: 2021-01-13 16:57:19
+ * @LastEditTime: 2021-01-30 13:56:55
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \h5_1\src\App.vue
@@ -12,7 +12,7 @@
     <transition :name="transitionName">
       <router-view />
     </transition>
-    <tabbar />
+    <tabbar v-show="isTabbar" />
   </div>
 </template>
 
@@ -20,28 +20,15 @@
 import requestLoading from '@/components/RequestLoading';
 import Tabbar from '@/components/tabbar.vue';
 import { mapState } from 'vuex';
-import router from "./router";
 export default {
   name: 'App',
   components: {
     requestLoading,
     Tabbar
   },
-  beforeRouteEnter(to, from, next) {
-    next((vm) => {
-      // 通过 `vm` 访问组件实例
-      console.log('vm == ', vm);
-    });
-  },
-  beforeRouteUpdate(to, from, next) {
-    // just use `this`
-    console.log('beforeRouteUpdate to == ', to);
-    next();
-  },
   computed: {
     ...mapState({
       isTabbar: (state) => {
-        console.log('isTabbar == ', state.isTabbar);
         return state['common'].isTabbar;
       }
     })
@@ -58,18 +45,9 @@ export default {
       const toDepth = routerDeep.indexOf(to.path);
       const fromDepth = routerDeep.indexOf(from.path);
       this.transitionName = toDepth > fromDepth ? 'slide-left' : 'slide-right';
-      // // 如果to索引大于from索引,判断为前进状态,反之则为后退状态
-      // if (to.meta.index > from.meta.index) {
-      //   //设置动画名称
-      //   this.transitionName = 'slide-left';
-      // } else {
-      //   this.transitionName = 'slide-right';
-      // }
     }
   },
-  mounted() {
-    console.log("router === ", router)
-  }
+  mounted() {}
 };
 </script>
 <style lang="scss">

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-09-26 18:37:43
- * @LastEditTime: 2021-01-11 11:23:59
+ * @LastEditTime: 2021-01-30 14:03:07
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \h5_1\src\utils\permission.js
@@ -16,17 +16,19 @@
  */
 import router from '@/router';
 import store from '@/store';
-import { getToken } from './auth';
+// import { getToken } from './auth';
 import NProgress from 'nprogress'; // 进度条
 import 'nprogress/nprogress.css'; // 进度条样式
 // import {
 //   Message
 // } from 'element-ui'
 
-const whiteList = ['/login']; // 不重定向白名单
+// const whiteList = ['/login']; // 不重定向白名单
 router.beforeEach((to, from, next) => {
   if (to.meta && to.meta.tabbar) {
-    store.state.isTabbar = to.meta.tabbar;
+    store.state['common'].isTabbar = to.meta.tabbar;
+  } else {
+    store.state['common'].isTabbar = false;
   }
   next();
   // NProgress.start();

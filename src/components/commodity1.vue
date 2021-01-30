@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-06 16:44:07
- * @LastEditTime: 2021-01-07 18:38:08
+ * @LastEditTime: 2021-01-20 10:54:09
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \h5_1\src\components\commodity1.vue
@@ -208,7 +208,9 @@ export default {
           padding: 0 3px;
           margin-right: 5px;
           height: 16px;
-          line-height: 16px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
           border-radius: 2px;
         }
         .similarity {

@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-12-09 13:56:27
- * @LastEditTime: 2021-01-09 14:14:24
+ * @LastEditTime: 2021-01-30 14:02:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \h5_1\src\components\tabbar.vue
@@ -70,12 +70,20 @@ export default {
     };
   },
   computed: {},
-  watch: {},
+  watch: {
+    $route: {
+      handler(to, from) {
+        console.log(to, from);
+        this.active = to.meta.tabbarIndex;
+      },
+      immediate: true
+    }
+  },
   methods: {
     changeTab(e) {
+      if (this.active == e.id) return;
       this.active = e.id;
       this.$router.push(e.path);
-      console.log('Hello World!');
     }
   },
   filters: {},
@@ -103,6 +111,7 @@ export default {
     box-shadow: 0 0 10px 0 hsla(0, 6%, 58%, 0.6);
     li,
     a {
+      height: 100%;
       flex: 1;
       display: flex;
       justify-content: center;
